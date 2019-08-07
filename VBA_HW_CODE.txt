@@ -1,0 +1,42 @@
+Sub Stockticker()
+
+' creating variables for tickert and volume
+
+Dim ticker As String
+
+Dim TotalVolume As Double
+
+TotalVolume = 0
+
+' picking a place for my summary table
+
+
+Dim Summary_Table_Row As Integer
+Summary_Table_Row = 2
+
+
+    For i = 2 To 70926
+
+        If Cells(i + 1, 1).Value <> Cells(i, 1).Value Then
+    
+        ticker = Cells(i, 1).Value
+    
+        TotalVolume = TotalVolume + Cells(i, 7).Value
+    
+        Range("I" & Summary_Table_Row).Value = ticker
+    
+        Range("J" & Summary_Table_Row).Value = TotalVolume
+    
+        Summary_Table_Row = Summary_Table_Row + 1
+    
+        TotalVolume = 0
+    
+    Else
+
+        TotalVolume = TotalVolume + Cells(i, 7).Value
+    
+    End If
+    
+    Next i
+
+End Sub
